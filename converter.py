@@ -1,9 +1,5 @@
 import json
 
-def jsonl_to_json(jsonl_file, json_file):
-    with open(jsonl_file, 'r', encoding='utf-8') as infile:
-        jsonl_data = infile.readlines()
-
     json_data = [json.loads(line.strip()) for line in jsonl_data]
 
     structured_data = {"train": [], "validation": [], "test": []}
