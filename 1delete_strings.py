@@ -1,0 +1,53 @@
+import pandas as pd
+import csv
+
+col_names = ['msisdn',
+             'start_time',
+             'duration',
+             'bot_duration',
+             'reg_num',
+             'fio',
+             'endpoint_mark',
+             'status_mark',
+             'verification_mark',
+             'objection_mark',
+             'zapis_of_comment',
+             'call_transcript',
+             'call_record',
+             'output_log',
+             'robot_detected',
+             'status',
+             'virified',
+             'recall_count',
+             'sum',
+             'client_id',
+             'smart_dialogs_uid',
+             'new_call_record',
+             'api_count',
+             'api_result',
+             'call_uid',
+             'request_from_handler',
+             'curl_api_count',
+             'manager',
+             'virtual_group',
+             'time_zone',
+             'flag',
+             'flag_reserv',
+             'script',
+             'uuid',
+             'sex',
+             'call_start_time',
+             'asr_duration',
+             'secretary',
+             'SD req',
+             'need_check_birthdate',
+             'attempt',
+             'type_call',
+             'voice_name',
+             'ringing_duration',
+             'ringing_d']
+df = pd.read_csv('D://fromtech//cef_november//CEF_TheRest_2.0_november.csv', names=col_names, skiprows=2,delimiter=';', decimal=',')
+df.columns = df.columns.str.strip()
+df = df[(df.endpoint_mark != 'Автоответчик') & (df.endpoint_mark != 'Недозвон')]
+df = df[(df.status_mark != 'Автоответчик') & (df.status_mark != 'Недозвон')]
+df.to_csv('data2_cef_november.csv', index=False)
